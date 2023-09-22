@@ -6,8 +6,15 @@ import { Label } from "./components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select";
 import { Slider } from "./components/ui/slider";
 import { VideoInputForm } from "./components/video-input-form";
+import { PromptSelect } from "./components/prompt-select";
+import { useState } from "react";
 
 export function App() {
+  const [temperature,setTemperature] = useState(0.5)
+
+  const handlePromptSelected = (template: string) => {
+    console.log(template);
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -50,15 +57,7 @@ export function App() {
           <form className="space-y-6">
             <div className="space-y-2">
               <Label>Prompt</Label>
-              <Select >
-                <SelectTrigger>
-                  <SelectValue placeholder="Selecione um prompt..." /> 
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="title">Título do YouTube</SelectItem>
-                  <SelectItem value="description">Descrição do YouTube</SelectItem>
-                </SelectContent>
-              </Select>
+              <PromptSelect onPromptSelected={handlePromptSelected} />
               <span className="block text-xs text-muted-foreground italic">Você poderá customizar essa opção em breve</span>
             </div>
             
@@ -81,7 +80,7 @@ export function App() {
 
             <div className="space-y-2">
               <Label>Temperatura</Label>
-              <Slider min={0} max={1} step={0.1} />
+              <Slider min={0} max={1} step={0.1} value={[temperature]} onValueChange={value => setTemperature(value[0])}/>
               <span className="block text-xs text-muted-foreground italic leading-relaxed">
                 Valores mais altos tendem a deixar o resultado mais criativo e com possíveis erros
               </span>
