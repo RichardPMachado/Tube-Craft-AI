@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "prisma:studio": "npx prisma studio"
+    "prisma:studio": "npx prisma studio",
+    "prisma:db-seed": "npx prisma db seed"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "devDependencies": {
     "@types/node": "^20.6.2",
     "dotenv": "^16.3.1",

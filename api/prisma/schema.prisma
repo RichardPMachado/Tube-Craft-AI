@@ -12,14 +12,14 @@ datasource db {
 
 model Video {
   id            String   @id @default(uuid())
-  nome          String
+  name          String
   path          String
   transcription String?
   createdAt     DateTime @default(now())
 }
 
 model Prompt {
-  id           String @id @default(uuid())
-  title        String
-  templatepnpm String
+  id       String @id @default(uuid())
+  title    String
+  template String
 }
